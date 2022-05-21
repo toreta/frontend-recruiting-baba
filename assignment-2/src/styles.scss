@@ -1,0 +1,39 @@
+* {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: 0;
+}
+
+body {
+  // https://willcloud.jp/knowhow/font-family/#i-8
+  // 【2021年版】font-familyの正しい指定方法・タイプ別おすすめフォント設定例
+  // 4.1 ゴシック体の設定例
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+// https://proengineer.internous.co.jp/content/columnfeature/6489#11
+// CSS入門：select要素(プルダウン)の矢印を消す方法
+::-ms-expand {
+  display: none;
+}
+
+// https://www.w3schools.com/howto/howto_css_placeholder.asp
+// How TO - Change Placeholder Color
+::placeholder {
+  color: #DDDDDD;
+}
+:-ms-input-placeholder {
+  color: #DDDDDD;
+}
+::-ms-input-placeholder {
+  color: #DDDDDD;
+}
