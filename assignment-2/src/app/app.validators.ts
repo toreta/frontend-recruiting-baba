@@ -5,7 +5,7 @@ import {
 
 const regexes = {
   email: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
-  zipcode: /^\d$/,
+  zipcode: /^\d{7}$/,
 };
 
 export function emailPatternValidator(
