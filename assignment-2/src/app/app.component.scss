@@ -1,0 +1,70 @@
+$dtWidth: 140px;
+$ddWidth: 300px;
+$errorColor: #D60000;
+
+form {
+  width: $dtWidth + $ddWidth + 40px * 2;
+  padding: 20px 40px;
+}
+
+dt {
+  clear: left;
+  float: left;
+  width: $dtWidth;
+  padding-top: 8px;
+  padding-right: 20px;
+  text-align: right;
+  font-weight: bold;
+}
+
+dd {
+  padding-bottom: 20px;
+
+  ul {
+    padding-left: $dtWidth;
+    font-size: 14px;
+    color: $errorColor;
+  }
+}
+
+input, select {
+  width: $ddWidth;
+  padding: 10px 8px;
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  font-size: 14px;
+
+  &.is-error {
+    border-color: $errorColor;
+  }
+}
+
+.select-box-wrapper {
+  position: relative;
+
+  &::after {
+    content: '▼';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    font-size: 14px;
+    color: #888888;
+    transform: translate(0, -50%);
+  }
+}
+
+p {
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 40px;
+  border-radius: 10px;
+  background-color: #34CC7B;
+  color: #FFFFFF;
+
+  &[disabled] {
+    background-color: lighten(#34CC7B, 20%);
+  }
+}

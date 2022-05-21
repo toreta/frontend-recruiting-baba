@@ -1,0 +1,84 @@
+<ng-container *ngIf="form">
+  <form [formGroup]="form"
+        novalidate
+        (ngSubmit)="onSubmit()">
+    <dl>
+      <dt>氏名</dt>
+      <dd>
+        <input type="text"
+               placeholder="(例)トレタ太郎"
+               formControlName="name"
+               [ngClass]="{ 'is-error': isError('name') }">
+        <ul>
+          <li *ngIf="shouldShowError('name', 'required')">入力してください</li>
+        </ul>
+      </dd>
+
+      <dt>Eメール</dt>
+      <dd>
+        <input type="text"
+               placeholder="(例)yoyaku@toreta.in"
+               formControlName="email"
+               [ngClass]="{ 'is-error': isError('email') }">
+        <ul>
+          <li *ngIf="shouldShowError('email', 'required')">入力してください</li>
+          <li *ngIf="shouldShowError('email', 'pattern')">正しいメールアドレスを入力してください</li>
+        </ul>
+      </dd>
+
+      <dt>郵便番号</dt>
+      <dd>
+        <input type="text"
+               placeholder="(例)0000000"
+               formControlName="zip"
+               [ngClass]="{ 'is-error': isError('zip') }">
+        <ul>
+          <li *ngIf="shouldShowError('zip', 'required')">入力してください</li>
+          <li *ngIf="shouldShowError('zip', 'pattern')">ハイフンを含めず半角数字で入力してください</li>
+        </ul>
+      </dd>
+
+      <dt>都道府県</dt>
+      <dd>
+        <div class="select-box-wrapper">
+          <select formControlName="prefecture"
+                  [ngClass]="{ 'is-error': isError('prefecture') }">
+            <!-- FIXME: 「選択してください」の色を薄くする方法？ -->
+            <option value="">選択してください</option>
+            <option *ngFor="let p of prefectures"
+                    [value]="p.name">
+              {{ p.name }}
+            </option>
+          </select>
+        </div>
+        <ul>
+          <li *ngIf="shouldShowError('prefecture', 'required')">選択してください</li>
+        </ul>
+      </dd>
+
+      <dt>市区町村・番地</dt>
+      <dd>
+        <input type="text"
+               placeholder="(例)品川区西五反田７丁目２２−１７"
+               formControlName="address1"
+               [ngClass]="{ 'is-error': isError('address1') }">
+        <ul>
+          <li *ngIf="shouldShowError('address1', 'required')">入力してください</li>
+        </ul>
+      </dd>
+
+      <dt>建物名・号室</dt>
+      <dd>
+        <input type="text"
+               placeholder="(例)TOCビル 8F"
+               formControlName="address2">
+      </dd>
+    </dl>
+
+    <p>
+      <button type="submit" [disabled]="form.invalid">登録</button>
+    </p>
+  </form>
+</ng-container>
+
+<router-outlet></router-outlet>
