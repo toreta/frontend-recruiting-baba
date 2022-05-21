@@ -52,23 +52,23 @@ export class AppComponent {
     this.form = this.formBuilder.group({
       name: [
         '',
-        // [Validators.required],
+        [Validators.required],
       ],
       email: [
         '',
-        // [Validators.required, emailPatternValidator],
+        [Validators.required, emailPatternValidator],
       ],
       zip: [
         '',
-        // [Validators.required, zipcodePatternValidator],
+        [Validators.required, zipcodePatternValidator],
       ],
       prefecture: [
         '',
-        // [Validators.required],
+        [Validators.required],
       ],
       address1: [
         '',
-        // [Validators.required],
+        [Validators.required],
       ],
       address2: [
         '',
