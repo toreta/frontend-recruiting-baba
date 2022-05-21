@@ -30,11 +30,11 @@
       <dd>
         <input type="text"
                placeholder="(例)0000000"
-               formControlName="zipcode"
-               [ngClass]="{ 'is-error': isError('zipcode') }">
+               formControlName="zip"
+               [ngClass]="{ 'is-error': isError('zip') }">
         <ul>
-          <li *ngIf="shouldShowError('zipcode', 'required')">入力してください</li>
-          <li *ngIf="shouldShowError('zipcode', 'pattern')">ハイフンを含めず半角数字で入力してください</li>
+          <li *ngIf="shouldShowError('zip', 'required')">入力してください</li>
+          <li *ngIf="shouldShowError('zip', 'pattern')">ハイフンを含めず半角数字で入力してください</li>
         </ul>
       </dd>
 
@@ -46,7 +46,7 @@
             <!-- FIXME: 「選択してください」の色を薄くする方法？ -->
             <option value="">選択してください</option>
             <option *ngFor="let p of prefectures"
-                    [value]="p.code">
+                    [value]="p.name">
               {{ p.name }}
             </option>
           </select>
@@ -60,10 +60,10 @@
       <dd>
         <input type="text"
                placeholder="(例)品川区西五反田７丁目２２−１７"
-               formControlName="address"
-               [ngClass]="{ 'is-error': isError('address') }">
+               formControlName="address1"
+               [ngClass]="{ 'is-error': isError('address1') }">
         <ul>
-          <li *ngIf="shouldShowError('address', 'required')">入力してください</li>
+          <li *ngIf="shouldShowError('address1', 'required')">入力してください</li>
         </ul>
       </dd>
 
@@ -71,7 +71,7 @@
       <dd>
         <input type="text"
                placeholder="(例)TOCビル 8F"
-               formControlName="building">
+               formControlName="address2">
       </dd>
     </dl>
 

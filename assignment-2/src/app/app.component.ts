@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import {
   emailPatternValidator,
@@ -14,10 +16,10 @@ import {
 type UserAccountCreateFormData = {
   name: string;
   email: string;
-  zipcode: string;
+  zip: string;
   prefecture: string;
-  address: string;
-  building: string;
+  address1: string;
+  address2: string;
 }
 type FormKeys = keyof UserAccountCreateFormData;
 
@@ -39,6 +41,7 @@ export class AppComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit() {
@@ -49,25 +52,25 @@ export class AppComponent {
     this.form = this.formBuilder.group({
       name: [
         '',
-        [Validators.required],
+        // [Validators.required],
       ],
       email: [
         '',
-        [Validators.required, emailPatternValidator],
+        // [Validators.required, emailPatternValidator],
       ],
-      zipcode: [
+      zip: [
         '',
-        [Validators.required, zipcodePatternValidator],
+        // [Validators.required, zipcodePatternValidator],
       ],
       prefecture: [
         '',
-        [Validators.required],
+        // [Validators.required],
       ],
-      address: [
+      address1: [
         '',
-        [Validators.required],
+        // [Validators.required],
       ],
-      building: [
+      address2: [
         '',
         [],
       ],
@@ -88,10 +91,24 @@ export class AppComponent {
     return Boolean(touched && errors && errors[pattern]);
   }
 
-  onSubmit() {
+  onSubmit(): Observable<any> {
     this.isSubmitting = true;
 
-    const params = this.form?.value;
-    // ここから通信処理
+    type HttpStatResponse = {
+      code: number, // 201
+      description: string // 'Created'
+    };
+    return this.httpClient
+      .post('https://httpstat.us/201', this.form?.value)
+      .pipe(response => {
+        response.subscribe((r: Partial<HttpStatResponse>) => {
+          if (r.code === 201) {
+            this.isSubmitting = false;
+          } else {
+            // エラーハンドリング
+          }
+        })
+        return response;
+      });
   }
 }
