@@ -71,11 +71,7 @@
       <dd>
         <input type="text"
                placeholder="(例)TOCビル 8F"
-               formControlName="building"
-               [ngClass]="{ 'is-error': isError('building') }">
-        <ul>
-          <li *ngIf="shouldShowError('building', 'required')">入力してください</li>
-        </ul>
+               formControlName="building">
       </dd>
     </dl>
 
